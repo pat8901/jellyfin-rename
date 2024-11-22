@@ -5,7 +5,7 @@ CFLAGS = -Wextra -Wall -g -I"/usr/include" -I"./include"
 
 LDLIBS = -L"/usr/lib/x86_64-linux-gnu/" -lm
 
-SRCS = src/main.cpp
+SRCS = src/main.cpp src/search.cpp src/rename.cpp
 
 OBJS = $(SRCS:.c=.o)
 
