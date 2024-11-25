@@ -3,20 +3,18 @@
 #include "search.h"
 #include <vector>
 #include <string>
+#include <filesystem>
 
+namespace fs = std::filesystem;
 using namespace std;
 
 int main(void)
 {
     cout << "C++ Version:" << __cplusplus << endl;
+    fs::path test_path = "/home/jeff/Desktop/projects/c++/jellyfin-rename/test";
 
-    vector<string> files = collect_files();
-
-    cout << "Vector size (1): " << files.size() << endl;
-
-    string name = "jeff";
-    files.push_back(name);
-    cout << "Vector size (2): " << files.size() << endl;
+    build_test_files();
+    rename_recursive(test_path);
 
     return 0;
 }
