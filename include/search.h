@@ -7,6 +7,8 @@
 
 void dfs_postorder();
 int rename_recursive(std::filesystem::path path);
+std::filesystem::path replace_spaces(std::filesystem::path input_path);
+std::filesystem::path replace_regex(std::filesystem::path input_path);
 void build_test_files();
 std::vector<std::string> collect_files();
 

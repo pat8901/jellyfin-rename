@@ -4,6 +4,7 @@
 #include <iostream>
 #include <filesystem>
 #include <typeinfo>
+#include <regex>
 #include "search.h"
 
 namespace fs = std::filesystem;
@@ -33,15 +34,52 @@ int rename_recursive(std::filesystem::path path)
 
     for (fs::directory_entry const &entry : fs::recursive_directory_iterator(path))
     {
+        // TODO: Check to to see if new file name doesn't exist already
         if (entry.is_regular_file())
         {
-            cout << "before=" << entry.path() << endl;
-            fs::rename(entry, entry.path().parent_path() / "what.mkv");
-            cout << "after=" << entry.path() << endl;
+            // Debug mode
+            cout << "Renaming: " << entry.path() << " --> " << entry.path().parent_path() / "new_path.mkv" << endl;
+
+            // Logging
+
+            // Actual implementation
+            // fs::rename(entry, entry.path().parent_path() / "new_path.mkv");
         }
     }
 
     return EXIT_SUCCESS;
+}
+
+/* Replace all spaces with periods. */
+fs::path replace_spaces(fs::path input_path)
+{
+    std::string str = "hello world";
+    char target = ' ';
+    fs::path output_path = input_path;
+
+    for (int i = 0; i < str.length(); ++i)
+    {
+        cout << i << ": " << str[i] << endl;
+        if (str[i] == ' ')
+        {
+            str[i] = '.';
+        }
+    }
+
+    for (char c : str)
+    {
+        cout << c << endl;
+    }
+
+    return output_path;
+}
+
+/* Find patterns using regex and replace using defined rules. */
+fs::path replace_regex(fs::path input_path)
+{
+    fs::path output_path = input_path;
+
+    return output_path;
 }
 
 void build_test_files()

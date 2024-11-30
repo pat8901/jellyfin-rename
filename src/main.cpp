@@ -15,6 +15,7 @@ int main(void)
 
     build_test_files();
     rename_recursive(test_path);
+    replace_spaces(test_path);
 
-    return 0;
+    return EXIT_SUCCESS;
 }
