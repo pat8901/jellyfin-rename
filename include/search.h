@@ -11,5 +11,6 @@ std::filesystem::path replace_spaces(std::filesystem::path input_path);
 std::filesystem::path replace_regex(std::filesystem::path input_path);
 void build_test_files();
 std::vector<std::string> collect_files();
+std::ofstream *init_logging(std::filesystem::path log_path);
 
 #endif

@@ -53,25 +53,26 @@ int rename_recursive(std::filesystem::path path)
 /* Replace all spaces with periods. */
 fs::path replace_spaces(fs::path input_path)
 {
-    std::string str = "hello world";
     char target = ' ';
-    fs::path output_path = input_path;
+    std::string file = input_path.filename().string();
 
-    for (int i = 0; i < str.length(); ++i)
+    for (int i = 0; i < file.length(); i++)
     {
-        cout << i << ": " << str[i] << endl;
-        if (str[i] == ' ')
+        cout << file[i];
+        if (file[i] == ' ')
         {
-            str[i] = '.';
+            file[i] = '.';
         }
     }
+    printf("\n");
 
-    for (char c : str)
+    for (char c : file)
     {
-        cout << c << endl;
+        cout << c;
     }
+    printf("\n");
 
-    return output_path;
+    return input_path.parent_path() / file;
 }
 
 /* Find patterns using regex and replace using defined rules. */
@@ -110,4 +111,12 @@ std::vector<std::string> collect_files()
 
     size_t size = files.size();
     return files;
+}
+
+/* Initialize a file to log file renaming progress and any errors that occur. */
+std::ofstream *init_logging(fs::path log_path)
+{
+    std::ofstream *ptr_log = new std::ofstream(log_path);
+
+    return ptr_log;
 }
