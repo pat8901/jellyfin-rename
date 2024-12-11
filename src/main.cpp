@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <iostream>
-#include "search.h"
 #include <vector>
 #include <string>
 #include <filesystem>
+#include "search.h"
+#include "rename.h"
+#include "utils.h"
 
 namespace fs = std::filesystem;
 using namespace std;
@@ -19,6 +21,8 @@ int main(void)
 
     replace_spaces(test_path_movie);
     replace_regex(test_path_movie);
+
+    tokenize(test_path_movie);
 
     return EXIT_SUCCESS;
 }
